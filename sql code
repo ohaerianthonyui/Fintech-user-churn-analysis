@@ -1,0 +1,29 @@
+--What is the overall level of user engagement in the platform?
+SELECT COUNT(DISTINCT user) AS total_users
+FROM userdata;
+
+--What is the current churn rate among users?
+SELECT AVG(churn) * 100 AS churn_rate
+FROM userdata;
+
+--How do deposit and withdrawals vary among users?
+SELECT SUM(deposits) AS total_deposits, SUM(withdrawal) AS total_withdrawals
+FROM userdata;
+
+--How many users have taken credit card and downloaded the App?
+SELECT COUNT(DISTINCT user) AS credit_card_users
+FROM userdata
+WHERE cc_taken BETWEEN 1 AND 29
+AND app_downloaded = 1
+;
+--What is the number of mobile app and web users, and how does it impact their overall engagement?
+SELECT SUM(app_downloaded) AS App_users, SUM(web_user) AS Web_users
+FROM userdata;
+--How do rewards earned by users affect their  loyalty?
+SELECT user, churn, reward_rate
+FROM userdata
+WHERE churn = 0;
+--How effective is the referral program in acquiring users?
+
+
+
